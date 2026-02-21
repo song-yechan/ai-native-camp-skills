@@ -64,27 +64,43 @@ rm -rf /tmp/camp-skills
 
 ```
 ai-native-camp-skills/
-├── README.md                          # 이 파일
+├── README.md
 ├── .gitignore
 ├── .claude/
 │   └── skills/
-│       ├── day1-onboarding/           # Day 1 스킬
-│       │   ├── SKILL.md               # 스킬 본체 (진행 흐름)
+│       ├── day1-onboarding/
+│       │   ├── SKILL.md                        # 스킬 본체 (STOP PROTOCOL + 진행 흐름)
 │       │   └── references/
-│       │       └── concepts.md        # 상세 개념 레퍼런스
-│       ├── day2-context/              # Day 2 스킬
+│       │       ├── block0-setup.md             # 환경 설정
+│       │       ├── block1-concepts.md          # AI 시대 핵심 개념
+│       │       ├── block2-experience.md        # Claude Code 첫 체험
+│       │       ├── block3-features.md          # 7대 기능
+│       │       └── block4-cli-git.md           # CLI + git 기초
+│       ├── day2-context/
 │       │   ├── SKILL.md
 │       │   └── references/
-│       │       └── concepts.md
-│       ├── day3-skill/                # Day 3 스킬
+│       │       ├── block0-context-importance.md
+│       │       ├── block1-tool-philosophy.md
+│       │       ├── block2-mcp-deepdive.md
+│       │       ├── block3-mcp-practice.md
+│       │       └── block4-context-sync.md
+│       ├── day3-skill/
 │       │   ├── SKILL.md
 │       │   └── references/
-│       │       └── concepts.md
-│       └── day4-compound/             # Day 4 스킬
+│       │       ├── block0-design-principles.md
+│       │       ├── block1-clarify.md
+│       │       ├── block2-skill-translation.md
+│       │       ├── block3-skill-creation.md
+│       │       └── block4-skill-chaining.md
+│       └── day4-compound/
 │           ├── SKILL.md
 │           └── references/
-│               └── concepts.md
-└── lecture/                           # 원본 강의 가이드 (참고용)
+│               ├── block0-context-engineering.md
+│               ├── block1-compound-engineering.md
+│               ├── block2-github-basics.md
+│               ├── block3-service.md
+│               └── block4-compound-practice.md
+└── lecture/                                    # 원본 강의 가이드 (참고용)
     ├── day1_lecture_guide_complete.md
     ├── day2_lecture_guide.md
     ├── day3_lecture_guide.md
@@ -95,8 +111,8 @@ ai-native-camp-skills/
 
 | 파일 | 역할 |
 |------|------|
-| `SKILL.md` | **스킬의 본체**. Claude가 이 파일을 읽고 인터랙티브 교육을 진행합니다. frontmatter(name, description)과 Block 단위의 EXPLAIN/EXECUTE/QUIZ 흐름이 담겨 있습니다. |
-| `references/concepts.md` | **상세 개념 레퍼런스**. 사용자가 "자세히 알려줘"라고 하면 Claude가 이 파일을 참조하여 깊이 있는 설명을 제공합니다. SKILL.md가 압축본이라면 이 파일이 완전판입니다. |
+| `SKILL.md` | **스킬의 본체**. STOP PROTOCOL(2-Phase 진행 규칙), reference 파일 맵, 시작 블록 선택, 마무리만 포함하는 lean 라우터 파일입니다. |
+| `references/blockN-*.md` | **블록별 상세 콘텐츠**. 각 블록의 EXPLAIN, EXECUTE, QUIZ 내용이 담겨 있습니다. Claude가 해당 블록 진행 시 Read하여 사용합니다. |
 | `lecture/*.md` | **원본 강의 가이드**. 오프라인 강의에서 사용된 발표자 가이드입니다. 스킬의 원천 자료이며, 추가 맥락이 필요할 때 참고합니다. |
 
 ---
@@ -158,8 +174,7 @@ Day 4: 복리 성장 = Context 개선       ← "쓰면서 고치는 시스템"
 | Block 1 | Compound Engineering | 풀 사이클 6단계 (Build→Use→Notice→Debug→Fix→Document) |
 | Block 2 | GitHub 기초 | Repository, Commit, Branch, PR |
 | Block 3 | 서비스화 | GitHub + Vercel + Supabase |
-| Block 4 | Compound 실습 | CLAUDE.md 규칙 추가 사이클 체험 |
-| Block 5 | 마무리 | 1주 목표 설정, 전체 리캡 |
+| Block 4 | Compound 실습 | CLAUDE.md 규칙 추가 사이클 체험 + 1주 목표 설정 |
 
 **산출물**: 개선된 CLAUDE.md + 1주 목표
 
@@ -167,56 +182,75 @@ Day 4: 복리 성장 = Context 개선       ← "쓰면서 고치는 시스템"
 
 ## 스킬 아키텍처
 
-### SKILL.md 구조
+### STOP PROTOCOL (2-Phase 진행)
 
-모든 Day의 SKILL.md는 동일한 구조를 따릅니다:
+모든 Day의 각 블록은 **반드시 2턴**에 걸쳐 진행됩니다:
+
+```
+Phase A (Turn 1):
+  1. references/blockN-*.md를 Read
+  2. EXPLAIN 섹션 전달
+  3. EXECUTE 섹션 실행 (있는 경우)
+  4. STOP — 사용자 응답 대기
+
+Phase B (Turn 2):
+  1. QUIZ 출제 (AskUserQuestion)
+  2. 정답/오답 피드백
+  3. "다음 블록으로 넘어갈까요?"
+```
+
+이 프로토콜은 한 턴에 모든 내용을 쏟아내는 것을 방지하고, 사용자가 각 단계를 소화할 시간을 확보합니다.
+
+### SKILL.md 구조 (lean 라우터)
 
 ```markdown
 ---
-name: day1-onboarding                    # 스킬 식별자
-description: "설명 + 호출 트리거"         # Claude가 자동 매칭에 사용
+name: day1-onboarding
+description: "설명 + 호출 트리거"
 ---
 
 # 제목
+> 테마, 핵심 메시지, 소요 시간, 사전 과제, 산출물
 
-## 진행 가이드 (Claude가 따를 지시)
-# → 인터랙션 규칙, 진행 상태 표시 방법
+## STOP PROTOCOL — 절대 위반 금지
+# → Phase A/B 규칙, 핵심 금지 사항 4가지
 
-## Block 0: 제목
-### EXPLAIN  → 개념 설명 (비유 + 핵심만)
-### EXECUTE  → 실습 명령어 + 기대 결과
-### QUIZ     → AskUserQuestion으로 객관식 3문항
+## References 파일 맵
+# → 블록별 파일 경로 + QUIZ 유무 테이블
 
-## Block 1: ...
-## Block 2: ...
-
-## 마무리
+## 진행 규칙
+## 시작 (AskUserQuestion으로 블록 선택)
+## 마무리 (요약 테이블 + 산출물 확인)
 ```
 
-### 2계층 컨텐츠 구조
+### Per-Block Reference 파일 구조
 
-```
-SKILL.md (압축본)           references/concepts.md (완전판)
-─────────────────          ──────────────────────────
-핵심 비유 + 개념만     →   "자세히" 요청 시 참조
-400줄 내외                  300~450줄
-실행 흐름 중심              개념 설명 중심
-```
+```markdown
+# Block N: 제목
+> 📖 공식 문서: [링크]  ← 해당되는 경우
 
-**왜 분리했나?** Claude의 컨텍스트 윈도우는 유한합니다. 스킬 실행 시 SKILL.md만 로딩하고, 사용자가 깊은 설명을 원할 때만 concepts.md를 추가 로딩합니다. 이는 Claude Code Skill의 **Just-in-time 로딩** 원칙을 따른 것입니다.
+## EXPLAIN
+[핵심 개념 + 비유]
+
+## EXECUTE          ← 실습이 있는 블록만
+[단계별 실습 가이드]
+
+## QUIZ             ← 퀴즈가 있는 블록만
+[AskUserQuestion JSON + 정답 + 해설]
+```
 
 ### 인터랙션 패턴
 
 ```
 사용자: /day1
     ↓
-Claude: SKILL.md 로딩 → Block 0 EXPLAIN 표시
+Claude: SKILL.md 로딩 → AskUserQuestion으로 시작 블록 선택
     ↓
-사용자: (읽고 이해)
+사용자: "Block 0부터"
     ↓
-Claude: EXECUTE 단계 → 실습 가이드
+Claude: references/block0-*.md Read → EXPLAIN + EXECUTE 전달 → STOP
     ↓
-사용자: (실습 수행)
+사용자: "퀴즈 시작"
     ↓
 Claude: QUIZ → AskUserQuestion으로 객관식 출제
     ↓
@@ -224,9 +258,9 @@ Claude: QUIZ → AskUserQuestion으로 객관식 출제
     ↓
 Claude: 정답/오답 해설 → "다음 블록으로 넘어갈까요?"
     ↓
-사용자: "다음" / "자세히"
+사용자: "다음"
     ↓
-Claude: 다음 블록 시작 / references/concepts.md 참조하여 상세 설명
+Claude: references/block1-*.md Read → 다음 블록 시작
 ```
 
 ---
@@ -235,11 +269,11 @@ Claude: 다음 블록 시작 / references/concepts.md 참조하여 상세 설명
 
 ### 퀴즈 문항 변경
 
-SKILL.md의 QUIZ 섹션에서 문항/선택지/해설을 직접 수정하면 됩니다.
+`references/blockN-*.md`의 QUIZ 섹션에서 문항/선택지/해설을 직접 수정하면 됩니다.
 
 ### 새로운 Block 추가
 
-기존 Block 구조를 복제하여 EXPLAIN/EXECUTE/QUIZ를 채우면 됩니다.
+`references/` 폴더에 새 `blockN-topic.md` 파일을 만들고, SKILL.md의 References 파일 맵 테이블에 추가합니다.
 
 ### 참조 자료 확장
 
