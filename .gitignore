@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# PDF source materials
+*.pdf
+
+# Script source files
+day* - script.json
+day* - script.txt
+
+# Internal planning docs
+docs/
+
+# Temporary files
+*.tmp
+*.log
