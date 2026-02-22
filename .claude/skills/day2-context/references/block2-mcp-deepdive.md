@@ -1,6 +1,10 @@
 # Block 2: MCP 딥다이브
 
-> 📖 공식 문서: [Model Context Protocol](https://modelcontextprotocol.io)
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/mcp
+> 📖 MCP 프로토콜: https://modelcontextprotocol.io
+> ```
 
 ## EXPLAIN
 

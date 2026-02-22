@@ -1,5 +1,7 @@
 # Block 1: 핵심 개념 — AI 시대의 변화
 
+> 이 블록은 Claude Code 특정 기능이 아닌 개념 설명이므로 공식 문서 URL이 없습니다.
+
 ## EXPLAIN
 
 ### 지식노동자(Knowledge Worker)란?

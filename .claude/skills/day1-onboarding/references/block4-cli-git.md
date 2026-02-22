@@ -1,6 +1,9 @@
 # Block 4: CLI + git 기초
 
-> 📖 공식 문서: [Claude Code CLI 사용법](https://docs.anthropic.com/en/docs/claude-code/cli-usage)
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/cli-usage
+> ```
 
 ## EXPLAIN
 

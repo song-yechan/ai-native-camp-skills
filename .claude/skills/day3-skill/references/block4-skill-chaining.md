@@ -1,5 +1,10 @@
 # Block 4: 스킬 체이닝
 
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/skills
+> ```
+
 ## EXPLAIN
 
 ### 스킬 체이닝 = 하나의 스킬 결과를 다른 스킬의 입력으로 연결

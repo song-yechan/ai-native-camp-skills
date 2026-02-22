@@ -74,7 +74,13 @@ ai-native-camp-skills/
 │       │       ├── block0-setup.md             # 환경 설정
 │       │       ├── block1-concepts.md          # AI 시대 핵심 개념
 │       │       ├── block2-experience.md        # Claude Code 첫 체험
-│       │       ├── block3-features.md          # 7대 기능
+│       │       ├── block3-1-claude-md.md       # CLAUDE.md — 영구 기억
+│       │       ├── block3-2-skill.md           # Skill — 반복 작업 레시피
+│       │       ├── block3-3-mcp.md             # MCP — 외부 도구 연결
+│       │       ├── block3-4-subagent.md        # Subagent — 일 나눠주기
+│       │       ├── block3-5-agent-teams.md     # Agent Teams — 팀 분업
+│       │       ├── block3-6-hook.md            # Hook — 자동화 트리거
+│       │       ├── block3-7-plugin.md          # Plugin — 스킬 패키지
 │       │       └── block4-cli-git.md           # CLI + git 기초
 │       ├── day2-context/
 │       │   ├── SKILL.md
@@ -137,7 +143,7 @@ Day 4: 복리 성장 = Context 개선       ← "쓰면서 고치는 시스템"
 | Block 0 | Setup | Claude Code 환경 확인 |
 | Block 1 | 핵심 개념 | 지식노동자 변화, Allocation Economy, 새로운 역량 3가지 |
 | Block 2 | Experience | Claude Code 첫 체험 (파일 생성/수정) |
-| Block 3 | 7대 기능 | CLAUDE.md, Skill, MCP, Subagent, Agent Teams, Hook, Plugin |
+| Block 3 | 7대 기능 | CLAUDE.md(3-1), Skill(3-2), MCP(3-3), Subagent(3-4), Agent Teams(3-5), Hook(3-6), Plugin(3-7) — 개별 파일 |
 | Block 4 | CLI + git | 터미널 명령어 5개, git 기초, GitHub 개념 |
 
 **산출물**: CLAUDE.md 초안
@@ -187,37 +193,52 @@ Day 4: 복리 성장 = Context 개선       ← "쓰면서 고치는 시스템"
 모든 Day의 각 블록은 **반드시 2턴**에 걸쳐 진행됩니다:
 
 ```
-Phase A (Turn 1):
-  1. references/blockN-*.md를 Read
-  2. EXPLAIN 섹션 전달
-  3. EXECUTE 섹션 실행 (있는 경우)
-  4. STOP — 사용자 응답 대기
+┌─ Phase A (첫 번째 턴) ──────────────────────────────┐
+│ 1. references/에서 해당 블록 파일의 EXPLAIN 섹션을 읽는다    │
+│ 2. 기능을 설명한다                                        │
+│ 3. references/에서 해당 블록 파일의 EXECUTE 섹션을 읽는다    │
+│ 4. "지금 직접 실행해보세요"라고 안내한다                     │
+│ 5. ⛔ 여기서 반드시 STOP. 턴을 종료한다.                    │
+│                                                          │
+│ ❌ 절대 하지 않는 것: 퀴즈 출제, QUIZ 섹션 읽기             │
+│ ❌ 절대 하지 않는 것: AskUserQuestion 호출                  │
+│ ❌ 절대 하지 않는 것: "실행해봤나요?" 질문                   │
+└──────────────────────────────────────────────────────────┘
 
-Phase B (Turn 2):
-  1. QUIZ 출제 (AskUserQuestion)
-  2. 정답/오답 피드백
-  3. "다음 블록으로 넘어갈까요?"
+  ⬇️ 사용자가 돌아와서 "했어", "완료", "다음" 등을 입력한다
+
+┌─ Phase B (두 번째 턴) ──────────────────────────────┐
+│ 1. references/에서 해당 블록 파일의 QUIZ 섹션을 읽는다       │
+│ 2. AskUserQuestion으로 퀴즈를 출제한다                     │
+│ 3. 정답/오답 피드백을 준다                                 │
+│ 4. 다음 블록으로 이동할지 AskUserQuestion으로 묻는다         │
+│ 5. ⛔ 다음 블록을 시작하면 다시 Phase A부터.                │
+└──────────────────────────────────────────────────────────┘
 ```
 
 이 프로토콜은 한 턴에 모든 내용을 쏟아내는 것을 방지하고, 사용자가 각 단계를 소화할 시간을 확보합니다.
 
-### SKILL.md 구조 (lean 라우터)
+### SKILL.md 구조 (camp-1 품질 기준)
 
 ```markdown
 ---
 name: day1-onboarding
-description: "설명 + 호출 트리거"
+description: "설명 + 호출 트리거 키워드"
 ---
 
 # 제목
-> 테마, 핵심 메시지, 소요 시간, 사전 과제, 산출물
 
-## STOP PROTOCOL — 절대 위반 금지
-# → Phase A/B 규칙, 핵심 금지 사항 4가지
+이 스킬이 호출되면 아래 STOP PROTOCOL을 반드시 따른다.
 
-## References 파일 맵
-# → 블록별 파일 경로 + QUIZ 유무 테이블
-
+## 용어 정리                      ← 핵심 용어 테이블
+## STOP PROTOCOL — 절대 위반 금지   ← ASCII 박스 다이어그램
+  - 핵심 금지 사항 4가지
+  - 공식 문서 URL 출력 규칙
+  - Phase A 종료 시 필수 문구
+## 소요 시간 가이드                 ← 블록별 예상 시간
+## 핵심 전략                       ← 진행 흐름 요약
+## 블록 특수 규칙                   ← 블록별 예외 사항
+## References 파일 맵              ← 블록-파일 매핑 테이블
 ## 진행 규칙
 ## 시작 (AskUserQuestion으로 블록 선택)
 ## 마무리 (요약 테이블 + 산출물 확인)
@@ -227,7 +248,11 @@ description: "설명 + 호출 트리거"
 
 ```markdown
 # Block N: 제목
-> 📖 공식 문서: [링크]  ← 해당되는 경우
+
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/...
+> ```
 
 ## EXPLAIN
 [핵심 개념 + 비유]
@@ -238,6 +263,8 @@ description: "설명 + 호출 트리거"
 ## QUIZ             ← 퀴즈가 있는 블록만
 [AskUserQuestion JSON + 정답 + 해설]
 ```
+
+> 공식 문서 URL은 한국어 버전(code.claude.com/docs/ko/)을 사용합니다.
 
 ### 인터랙션 패턴
 
@@ -250,7 +277,7 @@ Claude: SKILL.md 로딩 → AskUserQuestion으로 시작 블록 선택
     ↓
 Claude: references/block0-*.md Read → EXPLAIN + EXECUTE 전달 → STOP
     ↓
-사용자: "퀴즈 시작"
+사용자: "완료" 또는 "다음"
     ↓
 Claude: QUIZ → AskUserQuestion으로 객관식 출제
     ↓

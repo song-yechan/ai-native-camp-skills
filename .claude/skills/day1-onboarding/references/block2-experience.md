@@ -1,5 +1,10 @@
 # Block 2: Experience — Claude Code 첫 체험
 
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/setup
+> ```
+
 ## EXPLAIN
 
 개념을 배웠으니 이제 직접 체험할 차례입니다. Claude Code에게 간단한 작업을 시켜보겠습니다.

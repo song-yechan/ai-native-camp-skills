@@ -1,5 +1,8 @@
 # Block 0: Context Engineering — 이 캠프의 정체
 
+> 이 블록은 Context Engineering 개념 설명이므로 공식 문서 URL이 없습니다.
+> 참고: https://code.claude.com/docs/ko/features-overview
+
 ## EXPLAIN
 
 **4일의 여정을 돌아보면:**

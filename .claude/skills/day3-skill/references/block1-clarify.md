@@ -1,5 +1,7 @@
 # Block 1: Clarify — 모호함을 명확함으로
 
+> 이 블록은 Clarify 프로세스 설명이므로 공식 문서 URL이 없습니다.
+
 ## EXPLAIN
 
 ### Clarify = 모호함을 명확함으로 바꾸는 과정

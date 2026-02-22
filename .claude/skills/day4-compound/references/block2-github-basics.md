@@ -1,5 +1,10 @@
 # Block 2: GitHub 기초
 
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/github
+> ```
+
 ## EXPLAIN
 
 **"기록 없이는 복리가 안 된다"**

@@ -1,6 +1,9 @@
 # Block 0: Setup — 환경 확인
 
-> 📖 공식 문서: [Claude Code 시작하기](https://docs.anthropic.com/en/docs/claude-code/overview)
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/setup
+> ```
 
 ## EXPLAIN
 

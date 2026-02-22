@@ -1,6 +1,9 @@
 # Block 3: 스킬 제작 2 — SKILL.md 생성 + 테스트
 
-> 📖 공식 문서: [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/skills
+> ```
 
 ## EXPLAIN
 

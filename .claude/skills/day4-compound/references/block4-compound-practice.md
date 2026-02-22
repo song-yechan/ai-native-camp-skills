@@ -1,5 +1,10 @@
 # Block 4: Compound 사이클 실습 + 마무리
 
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/memory
+> ```
+
 ## EXPLAIN
 
 이제 직접 Compound Engineering 사이클을 한 바퀴 돌려봅니다.

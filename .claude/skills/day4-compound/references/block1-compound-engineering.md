@@ -1,5 +1,7 @@
 # Block 1: Compound Engineering — 복리의 힘
 
+> 이 블록은 Compound Engineering 개념 설명이므로 공식 문서 URL이 없습니다.
+
 ## EXPLAIN
 
 ### Compound Engineering = 쓰면서 고치면 복리로 성장하는 것

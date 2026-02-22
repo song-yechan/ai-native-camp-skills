@@ -1,6 +1,9 @@
 # Block 3: MCP 실습
 
-> 📖 공식 문서: [Claude Code MCP 설정](https://docs.anthropic.com/en/docs/claude-code/mcp)
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/mcp
+> ```
 
 ## EXPLAIN
 

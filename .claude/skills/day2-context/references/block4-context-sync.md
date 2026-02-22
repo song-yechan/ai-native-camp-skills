@@ -1,5 +1,10 @@
 # Block 4: Context Sync 스킬 구축
 
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/sub-agents
+> ```
+
 ## EXPLAIN
 
 ### Context Sync = 여러 도구에서 정보를 자동 수집하여 하나의 문서로 정리하는 스킬
