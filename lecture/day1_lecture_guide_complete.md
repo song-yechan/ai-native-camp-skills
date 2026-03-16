@@ -7,7 +7,7 @@
 | 테마 | 발견 (Discovery) — "이게 되네?" |
 | 핵심 메시지 | **도구 사용법이 아니라, 지식노동의 새로운 형태를 체험한다.** 모르면 Claude에게 물어보면 된다. |
 | 총 소요 시간 | 약 180분 (3시간) |
-| 사전 과제 | Claude Code 설치 완료 + Anthropic 계정 연동 (Claude Pro/Max/Teams 구독) |
+| 사전 과제 | Claude Code 설치 완료 + Anthropic 계정 연동 (Claude Pro/Max/Teams/Enterprise 구독) |
 | 산출물 | 첫 CLAUDE.md + Claude Code 환경 세팅 완료 |
 
 ### 학습 목표
@@ -396,7 +396,8 @@ $ claude
 
 로그인 화면이 나타나면 Anthropic 계정으로 로그인
 
-✅ 구독 확인: Claude Pro ($20/월) 이상 필요
+✅ 구독 확인: Claude Pro/Max/Teams/Enterprise 구독 필요
+   (무료 플랜은 Claude Code 사용 불가)
 ```
 
 **발표자 노트**:
@@ -660,8 +661,8 @@ Block 3: What
 ├─ 3-2 Skill ─────── 반복 업무를 저장해둔 "레시피"
 │   └─ 3-3 MCP ───── Slack, Calendar 같은 외부 도구 연결 "USB 포트"
 │
-├─ 3-4 Subagent ──── Claude한테 일 시키기 (백그라운드에서 처리)
-│   └─ 3-5 Agent Teams ── 여러 명한테 동시에 일 시키기
+├─ 3-4 Subagent ──── Claude한테 일 시키기 (독립 컨텍스트에서 처리)
+│   └─ 3-5 Agent Teams ── 여러 명한테 동시에 일 시키기 (실험적 기능)
 │
 ├─ 3-6 Hook ──────── "이런 일이 생기면 자동으로 이거 해줘"
 │
@@ -793,7 +794,7 @@ MCP로 연결 가능한 도구들
 └──────────────────────────────────────────────────────┘
 
 연결 방법:
-claude mcp add notion https://mcp.notion.com/mcp
+claude mcp add --transport http notion https://mcp.notion.com/mcp
 ```
 
 **발표자 노트**:
@@ -805,7 +806,7 @@ claude mcp add notion https://mcp.notion.com/mcp
 #### 슬라이드 Block3-4-1: Subagent
 ```
 3-4 Subagent
-팀원한테 일 맡기기 (백그라운드에서 처리)
+팀원한테 일 맡기기 (독립 컨텍스트에서 처리)
 
 ┌────────────────────────────────────────────────────┐
 │  비유: 부하 직원에게 일 맡기기                     │
@@ -824,14 +825,14 @@ claude mcp add notion https://mcp.notion.com/mcp
 ```
 
 **발표자 노트**:
-- "긴 작업을 백그라운드에서 처리하게 할 수 있습니다"
+- "독립적인 컨텍스트에서 작업을 위임할 수 있습니다"
 - "예: 5개 경쟁사 동시에 리서치"
 
 ---
 
 #### 슬라이드 Block3-5-1: Agent Teams
 ```
-3-5 Agent Teams
+3-5 Agent Teams (실험적 기능)
 여러 명한테 동시에 일 시키기 (프로젝트 팀)
 
 ┌────────────────────────────────────────────────────┐
@@ -872,7 +873,8 @@ claude mcp add notion https://mcp.notion.com/mcp
 │ PreToolUse       │ 도구 사용 전 체크             │
 │ PostToolUse      │ 도구 사용 후 정리             │
 │ Notification     │ 알림 보내기                   │
-│ Stop             │ 세션 종료 시 정리             │
+│ Stop             │ Claude 응답 완료 시 실행      │
+│ 그 외 다수       │ SessionStart, SubagentStart 등│
 └──────────────────┴───────────────────────────────┘
 ```
 
@@ -898,7 +900,7 @@ claude mcp add notion https://mcp.notion.com/mcp
 │  MCP 설정 ← 수동 설정   │   ├─ MCP 설정           │
 │  Hook 설정 ← 수동 설정  │   ├─ Hook 설정          │
 │  팀원 각자 반복...      │   └─ Agent              │
-│                         │  claude plugin add ← 한줄│
+│                         │  /plugin install ← 한줄  │
 └─────────────────────────┴─────────────────────────┘
 ```
 
@@ -917,8 +919,8 @@ claude mcp add notion https://mcp.notion.com/mcp
 │    └─ MCP ──── 외부 도구 연결 (USB-C)              │
 ├─────────────────────────────────────────────────────┤
 │  [병렬 처리]                                        │
-│  Subagent ──── 백그라운드 처리 (1:1)               │
-│    └─ Agent Teams ── 팀 단위 처리 (N:N)            │
+│  Subagent ──── 독립 컨텍스트 처리 (1:1)            │
+│    └─ Agent Teams ── 팀 단위 처리 (N:N, 실험적)    │
 ├─────────────────────────────────────────────────────┤
 │  [자동화]                                           │
 │  Hook ──────── 이벤트 기반 자동 실행               │
@@ -1098,7 +1100,7 @@ Communication + Context Sync
 | Skill | 요리 레시피 | 재료와 순서만 따라하면 같은 결과 |
 | MCP | USB-C 포트 | 외부 기기를 연결하는 통로 |
 | Subagent | 부하 직원 | "이거 해놓고 끝나면 알려줘" |
-| Agent Teams | 프로젝트 TF | 팀원들이 서로 소통하며 협업 |
+| Agent Teams | 프로젝트 TF | 팀원들이 서로 소통하며 협업 (실험적) |
 | Hook | IFTTT | "이런 일이 생기면 자동으로 이거 해" |
 | Plugin | 앱스토어 | 한 줄로 모든 설정 설치 |
 
@@ -1254,7 +1256,7 @@ Claude에게:
 ### 공식 문서
 - Claude Code 설치: https://code.claude.com/docs/ko/setup
 - 빠른 시작: https://code.claude.com/docs/ko/quickstart
-- MCP 연결: https://code.claude.com/docs/en/mcp
+- MCP 연결: https://code.claude.com/docs/ko/mcp
 
 ### 추천 학습 자료
 - git 간편 안내서: https://rogerdudler.github.io/git-guide/index.ko.html

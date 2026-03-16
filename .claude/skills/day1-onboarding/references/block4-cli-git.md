@@ -2,7 +2,7 @@
 
 > **Phase A 시작 시 반드시 아래 형태로 출력한다:**
 > ```
-> 📖 공식 문서: https://code.claude.com/docs/ko/cli-usage
+> 📖 공식 문서: https://code.claude.com/docs/ko/cli-reference
 > ```
 
 ## EXPLAIN

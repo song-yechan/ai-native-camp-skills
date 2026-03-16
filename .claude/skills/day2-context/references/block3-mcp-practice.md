@@ -28,22 +28,11 @@ Notion MCP를 연결해줘
 → Claude가 `claude mcp add --transport http notion https://mcp.notion.com/mcp` 실행
 
 **옵션 B: 다른 도구**
-사용자에게 AskUserQuestion으로 질문:
-```json
-{
-  "questions": [{
-    "question": "어떤 도구를 연결해보고 싶나요?",
-    "header": "MCP 선택",
-    "options": [
-      {"label": "Notion", "description": "문서/DB 연결 (추천)"},
-      {"label": "Slack", "description": "채널 메시지 읽기/쓰기"},
-      {"label": "Google Calendar", "description": "일정 확인/생성"},
-      {"label": "건너뛰기", "description": "개념만 이해하고 넘어가기"}
-    ],
-    "multiSelect": false
-  }]
-}
-```
+
+Notion 외에 다른 도구를 연결하고 싶다면 Claude에게 요청하세요:
+- **Slack**: "Slack MCP를 연결해줘"
+- **Google Calendar**: "Google Calendar MCP를 연결해줘"
+- **건너뛰기**: 지금 연결이 어려우면 개념만 이해하고 넘어가도 괜찮습니다
 
 **Step 3: 연결 확인**
 ```

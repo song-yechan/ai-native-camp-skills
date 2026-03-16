@@ -8,7 +8,7 @@
 |-----|------|------|----------|
 | Day 1 | `/day1` | AI 시대의 변화 | CLAUDE.md, 7대 기능, CLI 기초 |
 | Day 2 | `/day2` | 맥락 연결하기 | MCP, Context Sync, 도구 설계 철학 |
-| Day 3 | `/day3` | 스킬 설계와 제작 | Clarify, SKILL.md, 스킬 체이닝 |
+| Day 3 | `/day3` | 스킬 설계와 제작 | Clarify, SKILL.md, 스킬 체이닝, 에이전트 활용 |
 | Day 4 | `/day4` | 시스템화 | Compound Engineering, GitHub, 서비스화 |
 
 ---
@@ -97,7 +97,8 @@ ai-native-camp-skills/
 │       │       ├── block1-clarify.md
 │       │       ├── block2-skill-translation.md
 │       │       ├── block3-skill-creation.md
-│       │       └── block4-skill-chaining.md
+│       │       ├── block4-skill-chaining.md
+│       │       └── block5-agent.md
 │       └── day4-compound/
 │           ├── SKILL.md
 │           └── references/
@@ -169,8 +170,9 @@ Day 4: 복리 성장 = Context 개선       ← "쓰면서 고치는 시스템"
 | Block 2 | 스킬 제작 1 | 문제를 스킬 언어로 번역 + Clarify |
 | Block 3 | 스킬 제작 2 | SKILL.md 생성 + 테스트 |
 | Block 4 | 스킬 체이닝 | 스킬A 출력 → 스킬B 입력 (공장 라인) |
+| Block 5 | 에이전트 활용 | Subagent vs Agent Teams, 병렬 작업, 스킬 테스트 위임 |
 
-**산출물**: 나만의 SKILL.md 1개
+**산출물**: 나만의 SKILL.md 1개 + 에이전트 활용 경험
 
 #### Day 4: 시스템화 (`/day4`)
 

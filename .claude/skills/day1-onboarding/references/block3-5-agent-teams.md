@@ -2,7 +2,8 @@
 
 > **Phase A 시작 시 반드시 아래 형태로 출력한다:**
 > ```
-> 📖 공식 문서: https://code.claude.com/docs/ko/sub-agents
+> 📖 공식 문서: https://code.claude.com/docs/ko/agent-teams
+> 📖 서브에이전트: https://code.claude.com/docs/ko/sub-agents
 > ```
 
 ## EXPLAIN

@@ -61,24 +61,12 @@
 
 **체이닝 설계 체험**
 
-사용자에게 AskUserQuestion으로 질문:
-```json
-{
-  "questions": [{
-    "question": "방금 만든 스킬의 결과물을 다른 용도로 활용할 수 있을까요?",
-    "header": "체이닝 아이디어",
-    "options": [
-      {"label": "요약 → 팀 공유", "description": "Slack/Notion으로 공유"},
-      {"label": "분석 → 리포트", "description": "분석 결과를 보고서로"},
-      {"label": "수집 → 정리 → 액션", "description": "3단계 체이닝"},
-      {"label": "아직 잘 모르겠다", "description": "개념만 이해하고 넘어가기"}
-    ],
-    "multiSelect": false
-  }]
-}
-```
+방금 만든 스킬의 결과물을 다른 용도로 활용할 수 있는지 생각해보세요:
+- **요약 → 팀 공유** — Slack이나 Notion으로 공유
+- **분석 → 리포트** — 분석 결과를 보고서로
+- **수집 → 정리 → 액션** — 3단계 체이닝
 
-답변을 받은 후 체이닝 구조를 시각적으로 보여준다:
+아이디어를 Claude에게 말하면 체이닝 구조를 시각적으로 보여줍니다:
 ```
 [스킬A] → 출력: report.md → [스킬B] → 출력: summary-slack.md
 ```

@@ -42,22 +42,11 @@ Slack, Notion, Calendar는 서로 의존성이 없음 → 각각 독립적으로
 
 **Step 1: 도구 선택**
 
-사용자에게 AskUserQuestion으로 질문:
-```json
-{
-  "questions": [{
-    "question": "Context Sync에 포함할 도구를 선택해주세요",
-    "header": "도구 선택",
-    "options": [
-      {"label": "Slack + Calendar", "description": "소통 + 일정 (기본)"},
-      {"label": "Slack + Notion + Calendar", "description": "소통 + 지식 + 일정"},
-      {"label": "Gmail + Calendar", "description": "이메일 + 일정"},
-      {"label": "직접 선택", "description": "원하는 도구 조합을 직접 입력"}
-    ],
-    "multiSelect": false
-  }]
-}
-```
+아래 조합 중 하나를 골라 Context Sync 스킬에 포함할 도구를 결정하세요:
+- **Slack + Calendar** — 소통 + 일정 (기본)
+- **Slack + Notion + Calendar** — 소통 + 지식 + 일정
+- **Gmail + Calendar** — 이메일 + 일정
+- 또는 원하는 도구 조합을 직접 선택
 
 **Step 2: 스킬 골격 생성**
 

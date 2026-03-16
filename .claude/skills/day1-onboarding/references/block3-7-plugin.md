@@ -27,7 +27,7 @@ Plugin (앱스토어의 앱)
 
 ```bash
 # Claude Code에서 플러그인 설치
-/install-plugin 플러그인URL
+/plugin install 플러그인URL
 ```
 
 ### 비유: 맥 앱 vs 앱스토어 앱

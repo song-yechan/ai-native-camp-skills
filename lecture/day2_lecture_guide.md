@@ -87,7 +87,7 @@ Day 1 리마인드
 ├─ Skill ─────── 반복 업무를 저장해둔 "레시피"
 │   └─ MCP ───── Slack, Calendar 같은 외부 도구 연결하는 "USB 포트"
 │
-├─ Subagent ──── Claude한테 일 시키기 (백그라운드에서 처리)
+├─ Subagent ──── Claude한테 일 시키기 (독립 컨텍스트에서 처리)
 │   └─ Agent Teams ── 여러 명한테 동시에 일 시키기
 │
 ├─ Hook ──────── "이런 일이 생기면 자동으로 이거 해줘"
@@ -456,10 +456,11 @@ Claude: "최근 메시지 10개입니다: ..."
 MCP 연결 방법 3가지
 
 ┌─────────────────────────────────────────────────────────┐
-│ 방법 1: Connectors (가장 쉬움) ⭐                       │
+│ 방법 1: claude.ai 웹 설정 (가장 쉬움) ⭐                │
 │ ─────────────────────────────────────────────────────── │
 │ claude.ai/settings/connectors 에서 클릭으로 연결        │
 │ 코드 한 줄 없이, 버튼만 누르면 됨                       │
+│ Claude Code에서 자동으로 사용 가능                       │
 │ 지원: Slack, Notion, Google Drive, Linear 등            │
 └─────────────────────────────────────────────────────────┘
 
@@ -484,13 +485,13 @@ MCP 연결 방법 3가지
 ```
 
 **발표자 노트**: 
-- 비개발자는 방법 1(Connectors)을 강력 추천
+- 비개발자는 방법 1(claude.ai 웹 설정)을 강력 추천
 - 방법 2는 터미널에 익숙해진 사람들에게 추천
 - 방법 3은 참고용으로만 언급
 
-#### 슬라이드 3-5: Connectors로 연결하기
+#### 슬라이드 3-5: claude.ai 웹 설정으로 연결하기
 ```
-Connectors로 연결하기 (방법 1)
+claude.ai 웹 설정으로 연결하기 (방법 1)
 
 1️⃣ claude.ai/settings/connectors 접속
 
@@ -502,6 +503,7 @@ Connectors로 연결하기 (방법 1)
 4️⃣ OAuth 인증 (구글/슬랙 로그인)
 
 5️⃣ 연결 완료! ✅
+   → Claude Code에서 자동으로 사용 가능
 
 확인 방법:
 Claude Code에서 /mcp 입력
@@ -517,8 +519,8 @@ Claude Code에서 /mcp 입력
 # Notion 연결
 claude mcp add --transport http notion https://mcp.notion.com/mcp
 
-# Slack 연결
-claude mcp add slack
+# Slack 연결 (claude.ai 웹 설정 또는 MCP 서버 URL 사용)
+# claude.ai/settings/connectors에서 연결 추천
 
 # 연결 확인
 /mcp
@@ -555,7 +557,7 @@ Claude Code에서:
 ```
 MCP 실습 1: Slack 연결하기
 
-1️⃣ Connectors로 Slack 연결
+1️⃣ claude.ai 웹 설정으로 Slack 연결
    (이미 되어 있으면 건너뛰기)
 
 2️⃣ Claude Code에서 확인
@@ -572,7 +574,7 @@ MCP 실습 1: Slack 연결하기
 ```
 MCP 실습 2: Notion 연결하기
 
-1️⃣ Connectors로 Notion 연결
+1️⃣ claude.ai 웹 설정으로 Notion 연결
    또는
    claude mcp add --transport http notion https://mcp.notion.com/mcp
 
@@ -602,9 +604,9 @@ claude mcp disable notion
 다시 활성화:
 claude mcp enable notion
 
-💡 "Lazy Loading" 설정:
-   컨텍스트가 10% 넘어가면 MCP 도구를 필요할 때만 연결
-   (고급 설정 — 나중에 배움)
+💡 "Tool Search" 기능:
+   MCP 도구가 많으면 자동으로 필요할 때만 로딩
+   (컨텍스트의 10% 이상 차지 시 자동 활성화)
 ```
 
 #### 슬라이드 3-11: MCP 핵심 정리
@@ -617,8 +619,8 @@ MCP 핵심 정리
 └─────────────────────────────────────────────────┘
 
 연결 방법 (쉬운 순서):
-1. Connectors — 클릭만으로 연결 (추천)
-2. 명령어 — claude mcp add
+1. claude.ai 웹 설정 — 클릭만으로 연결 (추천)
+2. 명령어 — claude mcp add --transport http
 3. .mcp.json — 수동 설정
 
 확인: /mcp
@@ -762,8 +764,8 @@ Block 2: 도구 연결
 ┌─────────┬────────────────────────────────────────┐
 │ 도구    │ 연결 방식                              │
 ├─────────┼────────────────────────────────────────┤
-│ Slack   │ MCP (Connectors 추천)                  │
-│ Notion  │ MCP (Connectors 또는 명령어)           │
+│ Slack   │ MCP (claude.ai 웹 설정 추천)           │
+│ Notion  │ MCP (claude.ai 웹 설정 또는 명령어)    │
 │ Gmail   │ API 스크립트 (Claude가 작성)           │
 │ Calendar│ API 스크립트 (Claude가 작성)           │
 │ Linear  │ MCP                                    │
@@ -856,13 +858,11 @@ Block 5: 완성 + 실행
 1️⃣ 스킬 파일 최종 확인
    .claude/skills/my-context-sync/SKILL.md
 
-2️⃣ 트리거 확인
+2️⃣ 스킬 설정 확인
    ---
    name: my-context-sync
-   triggers:
-     - "싱크"
-     - "sync"
-     - "컨텍스트 싱크"
+   description: 여러 도구에서 맥락을 수집하여 정리.
+               "싱크", "sync", "컨텍스트 싱크" 요청 시 사용.
    ---
 
 3️⃣ 실행 테스트
@@ -1006,7 +1006,7 @@ Claude에게:
    Slack, Gmail, Notion, Drive, Linear, Calendar
 
 ✅ MCP로 외부 도구 연결
-   Connectors / 명령어 / .mcp.json
+   claude.ai 웹 설정 / 명령어 / .mcp.json
 
 ✅ Context Sync 스킬 구축
    여러 도구에서 정보를 자동 수집하는 나만의 스킬
@@ -1089,7 +1089,7 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
    - 채널 = 맥락의 경계선 (무엇이 논의되고 있는지)
    - 스레드 = 맥락의 깊이 (왜 그렇게 결정됐는지)
    
-   MCP 연결: Connectors 또는 claude mcp add slack
+   MCP 연결: claude.ai 웹 설정 또는 명령어
    주요 도구: slack_read_channel, slack_post_message
 
 2. Gmail
@@ -1108,8 +1108,8 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
    - 데이터베이스 = 필터 가능한 메타데이터
    - Relations = 지식 그래프
    
-   MCP 연결: 
-   - Connectors (가장 쉬움)
+   MCP 연결:
+   - claude.ai 웹 설정 (가장 쉬움)
    - claude mcp add --transport http notion https://mcp.notion.com/mcp
    
    MCP 월간 검색량: 9,500회 (비개발 도구 중 1위)
@@ -1120,7 +1120,7 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
    - 축적된 산출물 아카이브 (비구조화된 파일)
    - 버전 히스토리
    
-   연결: Connectors 또는 API 스크립트
+   연결: claude.ai 웹 설정 또는 API 스크립트
 
 5. Linear/Jira
    설계 철학: 애자일 방법론 구현, 작업 추적 및 실행 구조화
@@ -1128,7 +1128,7 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
    - 이슈 = 구조화된 데이터 (실행 상태)
    - 스프린트 = 시간 범위가 있는 작업 묶음
    
-   MCP 연결: Connectors 또는 명령어
+   MCP 연결: claude.ai 웹 설정 또는 명령어
 
 6. Google Calendar
    설계 철학: 미래의 시간 자원 구조화
@@ -1167,14 +1167,14 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
 
 3. 연결 방법 3가지
    
-   방법 1: Connectors (가장 쉬움) ⭐
+   방법 1: claude.ai 웹 설정 (가장 쉬움) ⭐
    - claude.ai/settings/connectors 에서 클릭으로 연결
    - 코드 한 줄 없이 버튼만 누르면 됨
+   - Claude Code에서 자동으로 사용 가능
    - 지원: Slack, Notion, Google Drive, Linear 등
    
    방법 2: 명령어
    - claude mcp add --transport http notion https://mcp.notion.com/mcp
-   - claude mcp add slack
    - 터미널에서 한 줄이면 연결 완료
    
    방법 3: 수동 설정 (.mcp.json)
@@ -1194,7 +1194,7 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
    - MCP 도구가 많으면 컨텍스트 토큰 많이 소비
    - 자주 쓰는 도구만 연결
    - 안 쓰는 MCP는 disable
-   - Lazy Loading: 필요할 때만 연결 (고급 설정)
+   - Tool Search: MCP 도구가 많으면 자동으로 필요할 때만 로딩
 
 7. 모범 사례
    ✅ 자주 쓰는 도구만 연결
@@ -1225,11 +1225,8 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
 3. SKILL.md 구조
    ---
    name: my-context-sync
-   description: 나의 컨텍스트 싱크. "싱크", "sync" 요청에 사용.
-   triggers:
-     - "싱크"
-     - "sync"
-     - "컨텍스트 싱크"
+   description: 나의 컨텍스트 싱크. "싱크", "sync", "컨텍스트 싱크"
+               요청 시 사용. 여러 도구에서 정보를 수집하여 정리.
    ---
    
    # My Context Sync
@@ -1324,12 +1321,12 @@ Day 3: 스킬 = 맥락 기반 워크플로우 (Context 활용)
 목표: Slack과 Notion MCP 연결하기
 
 단계:
-1. Connectors로 Slack 연결
+1. claude.ai 웹 설정으로 Slack 연결
    - claude.ai/settings/connectors 접속
    - Slack "Connect" 클릭
    - OAuth 인증
 
-2. Connectors로 Notion 연결
+2. claude.ai 웹 설정으로 Notion 연결
    - Notion "Connect" 클릭
    - OAuth 인증
 
