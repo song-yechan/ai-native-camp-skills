@@ -73,3 +73,5 @@ AskUserQuestion({
 
 정답: 1번.
 해설: CLAUDE.md는 매 세션 시작 시 자동으로 읽히는 "영구 기억"입니다.
+
+> 💡 방금 여러분은 Compound Engineering의 Build → Use 단계를 경험했습니다.

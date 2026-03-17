@@ -720,6 +720,7 @@ Claude Code에 입력:
 **발표자 노트**:
 - 참가자들이 직접 /init 실행하도록 2-3분 시간 제공
 - "! 느낌표는 Claude한테 시키지 않고 직접 명령어를 실행하는 것"
+- 💡 방금 여러분은 Compound Engineering의 Build → Use 단계를 경험했습니다
 
 ---
 

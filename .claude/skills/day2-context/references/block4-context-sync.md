@@ -132,3 +132,5 @@ Claude에게 요청:
 ```
 정답: 3번 (Markdown 파일)
 해설: Markdown 파일이 가장 기본이고 범용적입니다. 이후 Slack 메시지나 Notion 페이지로 확장 가능합니다.
+
+> 💡 Build → Use → Notice 단계입니다. 부족한 점이 보이나요?
