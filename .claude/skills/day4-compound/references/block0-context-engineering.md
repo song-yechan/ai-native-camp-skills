@@ -1,7 +1,9 @@
 # Block 0: Context Engineering — 이 캠프의 정체
 
-> 이 블록은 Context Engineering 개념 설명이므로 공식 문서 URL이 없습니다.
-> 참고: https://code.claude.com/docs/ko/features-overview
+> **Phase A 시작 시 반드시 아래 형태로 출력한다:**
+> ```
+> 📖 공식 문서: https://code.claude.com/docs/ko/features-overview
+> ```
 
 ## EXPLAIN
 
@@ -74,6 +76,18 @@ AI가 참고할 맥락 전체를 설계하고 관리하는 기술
 - **Compound Engineering** = 그 맥락을 쓰면서 계속 개선하는 것 (반복)
 
 > "설계만 하고 안 고치면 낡아갑니다. 고치는 과정이 복리입니다."
+
+## EXECUTE
+
+**나의 Context Engineering 점검**
+
+Day 1~3에서 만든 것들을 돌아보세요:
+
+1. `cat CLAUDE.md` — 내 CLAUDE.md에 어떤 맥락이 담겨 있는지 확인
+2. `/mcp` — 어떤 외부 도구가 연결되어 있는지 확인
+3. 스킬이 있다면 `.claude/skills/` 폴더를 확인
+
+→ "내가 설계한 맥락 중 가장 잘 작동하는 것과 개선이 필요한 것"을 한 가지씩 떠올려보세요.
 
 ## QUIZ
 

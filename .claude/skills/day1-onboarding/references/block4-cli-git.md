@@ -129,3 +129,12 @@ cat CLAUDE.md  # CLAUDE.md 내용 보기
 ```
 정답: 2번 (기본 5개만 알면 나머지는 Claude에게 시키면 된다)
 해설: cd, ls, pwd, cat, open 5개만 알면 충분합니다. 나머지는 Claude가 해줍니다.
+
+### 더 배우고 싶다면
+
+| 리소스 | 설명 | 링크 |
+|--------|------|------|
+| git 간편 안내서 | 그림으로 쉽게 배우는 git | https://rogerdudler.github.io/git-guide/index.ko.html |
+| Learn Git Branching | 시각적으로 git을 체험하는 게임 | https://learngitbranching.js.org/?locale=ko |
+
+> 지금 다 알 필요는 없습니다. 나중에 궁금할 때 찾아보세요.

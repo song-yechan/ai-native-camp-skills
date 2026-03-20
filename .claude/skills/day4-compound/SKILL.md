@@ -175,6 +175,7 @@ AskUserQuestion({
       {"label": "처음부터 (Block 0)", "description": "Context Engineering부터 순서대로 (추천)"},
       {"label": "Compound Engineering (Block 1)", "description": "복리 성장 개념부터"},
       {"label": "GitHub 기초 (Block 2)", "description": "버전 관리부터"},
+      {"label": "서비스화 (Block 3)", "description": "스킬을 서비스로 확장"},
       {"label": "실습 바로 시작 (Block 4)", "description": "이론 건너뛰고 실습부터"}
     ],
     "multiSelect": false
